@@ -12,6 +12,8 @@ public class Sample {
 
         StaticUtilTool tool = new StaticUtilTool();
         tool.do_delete_by_path(root_path, "node_modules");
+
+//        tool.do_copy_source_to_d_disk("C:" + File.separator + "WebstormProjects", "C:" + File.separator + "IdeaProjects");
     }
 
 }

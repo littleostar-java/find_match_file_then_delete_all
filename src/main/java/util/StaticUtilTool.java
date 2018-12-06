@@ -1,8 +1,11 @@
 package util;
 
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.Objects;
 
@@ -55,6 +58,28 @@ public class StaticUtilTool {
                 delete_file(str);
                 System.out.println("deleted:\n\t\t" + str);
             }
+        }
+    }
+
+    public void do_copy_source_to_d_disk(String... root_path_str) throws IOException {
+        String dest_path_str = "D:" + File.separator + "backup_";
+
+        LocalDateTime now = LocalDateTime.now();
+        String time_format = "" + now.getMonthValue() + now.getDayOfMonth() + now.getHour() + now.getMinute();
+
+        for (String root_path_sub_str : root_path_str) {
+            File root_file = new File(root_path_sub_str);
+
+            String prefix = "code_backup";
+            File dest_file = new File(dest_path_str, prefix + time_format);
+            if (!dest_file.exists()) {
+                dest_file.mkdir();
+            }
+            File sub_file = new File(dest_file.getAbsolutePath(), root_file.getName());
+
+            FileUtils.copyDirectory(root_file, sub_file);
+            System.out.println("copy finished ... ");
+
         }
     }
 
