@@ -13,7 +13,7 @@ public class Sample {
         String root_path = "C:" + File.separator + "WebstormProjects";
 
         StaticUtilTool tool = new StaticUtilTool();
-        tool.delete_NodeModule_ByPath("node_modules",root_path); // it's ok
+        tool.do_delete_by_path( root_path, "node_modules"); // it's ok
 
         // ---------------------------------------------------------------------------
         // test, result is success
